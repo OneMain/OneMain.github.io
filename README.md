@@ -13,16 +13,18 @@ Git
 如果已经安装完成以上程序，打开Git-bash或者cmd，输入
 
 npm install -g hexo-cli
-即可完成Hexo的安装。
+<p>即可完成Hexo的安装。</p>
 
 使用Hexo进行本地建站,hexo并不是全局安装
-创建一个文件夹，比如 mkdir blog
+<p>创建一个文件夹，比如: </p>
+<p>mkdir blog</>
 
 输入
-
+<pre><code>
 cd D:\hexo
 hexo init
 npm install
+</code></pre>
 如果hexo安装成功，则在D:\hexo文件夹下的文件目录为
 <pre><code>
 .
@@ -38,7 +40,7 @@ npm install
 
 为了测试本地建站是否成功，输入
 
-hexo s
+<pre><code>hexo s</code></pre>
 <p>主题变化，可以在网上自行下载，提供一个不错的模板链接</p>
 </p>https://github.com/yelog/hexo-theme-3-hexo</p>
 <p>下载后将文件放在themes/</p>
