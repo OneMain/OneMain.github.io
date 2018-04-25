@@ -41,6 +41,6 @@ npm install
 hexo s
 <p>主题变化，可以在网上自行下载，提供一个不错的模板链接</p>
 </p>https://github.com/yelog/hexo-theme-3-hexo</p>
-下载后将文件放在themes/
-同时记得修改自己项目的_config.yml
-themes: 下载的模板文件夹名称
+<p>下载后将文件放在themes/</p>
+<p>同时记得修改自己项目的_config.yml</p>
+<p>themes: 下载的模板文件夹名称</p>
