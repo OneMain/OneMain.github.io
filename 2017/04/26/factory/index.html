@@ -221,7 +221,7 @@
     
     <p>
        1.1 什么是模式那？<br>
-      设计模式从字面上理解，模，就是模型、模版的意思；式，就是方式、方法的意思。综合起来，所谓的模式就是： 可以作为模型或者末班的方式或者方法。再简单点说就是可以用来作为样板的方式或者方法，类似于大家所熟悉的范例。
+      设计模式从字面上理解，模，就是模型、模版的意思；式，就是方式、方法的意思。综合起来，所谓的模式就是： 可以作为模型或者末班的方式或者方法。再简单点说就是可以用来作为样板的方式或者方法，类似于大家所熟悉的范例。<br>
        1.2 设计模式的概念？<br>
        设计模式：是指在软件开发中，经过验证的，用于解决在特定环境下重复出现的，特定问题的解决方案。<br>
        1.3 设计模式的组成?<br>
@@ -231,8 +231,7 @@
      <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="简单工厂"></a>简单工厂</h2>
 
      <h3 id="Create-a-new-post">
-      <a href="#Create-a-new-post" class="headerlink" title="简单工厂-定义">定义</a>
-        简单工厂-定义
+      <a href="#Create-a-new-post" class="headerlink" title="简单工厂-定义">简单工厂-定义</a>
      </h3>
 
      <figure class="highlight bash">
@@ -268,8 +267,8 @@
           <span class="code">由于外部调用和内部实现被接口隔离开了，那么只要接口不变，内部实现的变化就不会影响到外部应用，从而使系统更加灵活，更好的拓展性和延展性</span><br>
           <span class="gutter">5. 接口和抽象类的选择</span><br>
           <span class="code">既然接口是一种特殊的抽象类，那么在开发中，该如何选择接口还是抽象类那？对于二者的选择大都遵循二句话<br>
-            <一>: 优先选择接口<br>
-            <二>： 在既要定义子类的行为，又要为子类提供公共功能是应选择抽象类
+            <code> 优先选择接口</code><br>
+            <code>在既要定义子类的行为，又要为子类提供公共功能是应选择抽象类</code>
           </span><br>
 
         </p>
@@ -278,36 +277,11 @@
         <p>
           <span class="gutter">不适用模式解决方案</span>
           <p>
-            /**
-             * 
-             * (1) 某个接口 （通用的，抽象的，费具体的功能）
-             */
-            public interface Api{
-              public void test1(String s);
-            }
-            /**
-             *(2) 既然有了借口，就要实现它，定义impl 
-             * 
-             */
-            public class Impl implements Api{
-              public void test1(String s) {
-                System.out.print("Now in Impl the input s==" + s);
-              }
-            }
-            /**
-             * (3) 客户端： 测试使用Api接口
-             *
-             */
-            public class Client{
-              public static void main (String[] args) {
-                Api api = new Impl();
-                api.test1("hahhahahahah");
-              }
-            }
+           <img src="/images/no_factory.PNG">
           </p>  
         </p>
       </div>
-      <p>More info: 上面实现想想接口的功能和思想，发现了什么？仔细想想？</p>
+      <p>More info: <code>上面实现想想接口的功能和思想，发现了什么？仔细想想？</code></p>
       <p> 你会发现在客户端调用的时候，客户端不仅知道了接口，同时还知道具体的实现。而接口的思想是： 隔离封装，客户端根本就不应该知道具体的实现类是Impl。有朋友会说，那好，我把Impl从客户端拿掉，让api真正的对实现进行封装隔离，可是新的问题又出现了，当把new Impl() 去掉后，却发现无法得到api接口对象了，怎么办那。</p>
       <p>把这个问题描述一下：在java编程中，出现只知道接口而不知道实现，该怎么办，就像在Client,他知道要是用Api接口,却不知道如何使用接口</p>
   </div>
