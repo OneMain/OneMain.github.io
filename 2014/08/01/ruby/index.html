@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 
 
-  <html class="light page-archives201804">
+  <html class="light page-post">
 
 
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2018/4 | Hexo</title>
+  <title>Ruby 抓取红篮球</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-
+    <meta name="keywords" content=" Ruby map、each、select、inject、collect 、detect reference" />
   
     <link rel="icon" href="/favicon.ico">
   
@@ -72,17 +72,8 @@
     <span id="toolbox-mobile" class="toolbox-mobile">点我</span>
   
 
-  <div class="content content-archive">
-  <div class="page-header">
-
-  
-    <div class="breadcrumb">
-      <div class="location">博客</div>
-      <i class="icon-location"></i>
-    </div>
-  
-
-  
+  <div class="post-header CENTER">
+   
   <div class="toolbox">
     <a class="toolbox-entry" href="/">
       <span class="toolbox-entry-text">点我</span>
@@ -161,49 +152,118 @@
   </div>
 
 
+</div>
 
-  <div class="box-blog-info">
-    <a class="avatar" href="/">
-      <img src="/images/avatar.jpg" alt="" />
-    </a>
-    <div class="info">
-      <h3 class="name" style="font-family: calligraffittiregular">
-        OneMain
-      </h3>
-      <div class="slogan">
-        Change the bug of the world
+
+
+
+
+<div class="content content-post CENTER">
+  <article id="post-hello-world" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title">利用nokogiri进行简单解析抓取内容</h1>
+
+      <div class="article-meta">
+        <span>
+          <i class="icon-calendar"></i>
+          <span>2014.08.01</span>
+        </span>
+
+        
+          <span class="article-author">
+            <i class="icon-user"></i>
+            <span>Cherry May</span>
+          </span>
+          <span>
+            <i class="icon-comment"></i>
+            <a href="http://OneMain.github.io/2014/08/01/ruby/#disqus_thread"></a>
+          </span>
+        
+
+        
+        <i class="fa fa-eye"></i> 
+          <span id="busuanzi_container_page_pv">
+             &nbsp热度 <span id="busuanzi_value_page_pv">
+             <i class="fa fa-spinner fa-spin"></i></span>℃
+          </span>
+        
+        
       </div>
+    </header>
+
+    <div class="article-content">
+      <p>一直再买红篮球，知道看了一部电视剧，剧中王丽坤扮演的是一名会计行业人员，其中一个场景印象特别深，在她将要交不起房租的那几天，在家苦苦钻研算红篮球概率，人家最后竟然中了2000元，而且人家说了，这很难算了，最起码能算啊。。。。佩服</p>
+      <p>至此决定写个抓取，我也来掐指算算。。。。。。。</p>
+      <code>nokogiri</code>
+      Nokogiri是Ruby的gem,常用来解析XML/HTML,爬取网络数据等.<br>
+      <strong>基础语法</strong>
+        直接以字符串形式获取nokogiri对象:<br>
+        html_doc = Nokogiri::HTML("<html><body><h1>Mr. Belvedere Fan Club</h1></body></html>")<br>
+        xml_doc = Nokogiri::XML("<root><aliens><alien><name>Alf</name></alien></aliens></root>")<br>
+        这里的html_doc和xml_doc就是nokogiri文件,<a href="https://www.rubydoc.info/github/sparklemotion/nokogiri/Nokogiri/XML/Document">它们可用的方法在这里</a><br>
+
+        也可以通过文件句柄获取nokogiri对象:<br>
+        f = File.open("blossom.xml")<br>
+        doc = Nokogiri::XML(f)<br>
+        f.close<br>
+
+        还可以直接从网站获取:<br>
+        require 'open-uri' doc = Nokogiri::HTML(open("http://www.xxx.com/"))<br>
+
+        <code>导入三个相当必要的包</code>
+        <figure class="highlight bash">
+          <table>
+            <tr>
+              <td class="gutter">
+                <pre><span class="line">require 'net/http'</span><br></pre>
+              </td>
+              <td class="code">
+                <pre><span class="line">require 'mysql2'</span><br></pre>
+              </td>
+            </tr>
+            <tr>
+              <td class="gutter">require 'nokogiri'
+              </td>
+              <td class="code">
+              </td>
+            </tr>
+          </table>
+      </figure>
+      <p> More info :<br> 
+        1:net/http相当于php的curl函数，可以实现http请求，模拟浏览器一样的请求，发送给http服务器得到返回数据。<br>
+        2:mysql2，mysql连接，相当于java的jdbc，实现数据库读写<br>
+        3:nokogiri，这是一个html的dom解析类库，可以快速的解析html，获得节点下的属性，文本，子节点等<br></p>  
+      <h3>开始---完整代码</h3>
+      <img src="/images/lanqiu.PNG"></div>
+
+      <p>Note: 数据爬取简单，数据分析难！写入数据库要做很多的分析，如何解析html或者json，如何格式化字符串，得到想要的内容，如何建立合适的表，合适的字段，并且如何将数据一一对应的插入进去，这些比爬虫本身复杂多</p>
+
     </div>
-  </div>
+    <div class="git"></div>
 
-</div>
+</article>
 
 
-  <div class="post-list-box archive-body">
-    <ul class="list-post">  <li class="item-year item item-title item-title-3">
-    <a href="/archives/2014" class="text-year">
-      2018
-      <i class="icon-gou"></i>
-      
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="hide pull-left" href="/">
+        <i class="icon icon-angle-left"></i>
     </a>
-  </li>
-<li class="item-post item">
-  <span class="post-date">07-30</span>
-
-  <a class="post-title" href="/2014/07/30/ruby/">Ruby map、each、select、inject、collect 、detect reference</a>
-
-</li>
-</ul>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
   </div>
 
-  <div class="archive-footer">
-    
 
-  </div>
+
+
 </div>
 
 
-
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
 
 
 
@@ -291,6 +351,46 @@
 </div>
 
 
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://OneMain.github.io/2018/04/25/hello-world/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+    
+
+    
+    
+
+    
+
+    
+    
+
+  </div>
 
   
 

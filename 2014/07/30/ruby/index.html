@@ -209,8 +209,111 @@
     </header>
 
     <div class="article-content">
+      <p>项目中经常会遇到，在Array中筛选出合适的数据，又或者是根据不同的条件对元素进行操作，主要举例Array几个常用的方法：</p>
+      <code id="map"><a href="#map">map：(collect是map的别名函数)</a></code>
+      <span>对数组中每个元素进行表达式操作，原始数组不会被改变，返回执行表达式结果的新数组</span><br>
+       <figure class="highlight bash">
+        <table>
+          <tr>
+            <td class="gutter">
+              <pre><span class="line">[1,2,3,4,5,6,7,8,9,10].map{|e| e*3} </span><br></pre>
+            </td>
+            <td class="code">
+              <pre><span class="line">=> [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]</span><br></pre>
+            </td>
+          </tr>
+          <tr>
+            <td class="gutter">
+              <pre><span class="line">[1,2,3,4,5,6,7,8,9,10].collect{|e| e == 3} </span><br></pre>
+            </td>
+            <td class="code">
+              <pre><span class="line">=>[false, false, true, false, false, false, false, false, false, false]</span><br></pre>
+            </td>
+          </tr>
+        </table>
+      </figure>
+
+      <code id="each"><a href="#each">each： 常用作数组的循环操作，对循环的参数做表达式操作，原数组不会被改变，返回原始数组</a>
+      </code>
+      <span>对数组中每个元素进行表达式操作，原始数组不会被改变，返回执行表达式结果的新数组</span><br>
+       <figure class="highlight bash">
+        <table>
+          <tr>
+            <td class="gutter">
+              <pre><span class="line">[1,2,3,4,5,6,7,8,9,10].each{|e| print e.to_s + "###"}  </span><br></pre>
+            </td>
+            <td class="code">
+              <pre>
+                <span class="line">
+                  => 1###2###3###4###5###6###7###8###9###10### 
+                  =>返回 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+                </span><br></pre>
+            </td>
+          </tr>
+        </table>
+      </figure>
+
+      <code id="select"><a href="#select">select： 相当于过滤器，返回符合表达式元素的<strong>新数组</strong>，如果所有都不符合表达式则返回空数组</a></code>
+       <figure class="highlight bash">
+        <table>
+          <tr>
+            <td class="gutter">
+              <pre><span class="line">[1,2,3,4,5,6,7,8,9,10].select{|e| e == 3} </span><br></pre>
+            </td>
+            <td class="code">
+              <pre>
+                <span class="line">
+                  =>  [3]
+                </span><br></pre>
+            </td>
+          </tr>
+        </table>
+      </figure>
 
 
+      <code id="find"><a href="#find">detect：（find的别名函数） 返回列表中第一个符合条件的元素</a></code>
+       <figure class="highlight bash">
+        <table>
+          <tr>
+            <td class="gutter">
+              <pre><span class="line">[1,2,3,4,5,6,7,8,9,10].detect{|e| e == 3 || e == 2} </span><br></pre>
+            </td>
+            <td class="code">
+              <pre>
+                <span class="line">
+                  =>  2
+                </span><br></pre>
+            </td>
+          </tr>
+        </table>
+      </figure>
+
+
+       <code id="inject"><a href="#inject">inject: 在所声明的容器中注入符合条件的元素，累加器作用</a></code>
+       <p>
+         
+         eg：[1,2,3,4,5,6,7,8,9,10].inject{ |sum,e| sum += e } 其中sum为所声明的注入器 <br>将累加后的结果最后注入到sum中并返回注入器最后结果<br>
+        eg：[1,2,3,4,5,6,7,8,9,10].inject{|result,elem| result + elem} => 55<br>
+          此时inject没有带参数，这是result会为数组中第一个元素，elem为第二个元素，依次累加返回最后结果 <br>
+       </p>
+
+
+      <code id="reject"><a href="#reject">reject: 去除列表中符合条件的元素</a></code>
+       <figure class="highlight bash">
+        <table>
+          <tr>
+            <td class="gutter">
+              <pre><span class="line">[1,2,3,4,5,6,7,8,9,10].reject{|e| e==2 || e==8} </span><br></pre>
+            </td>
+            <td class="code">
+              <pre>
+                <span class="line">
+                  =>  [1, 3, 4, 5, 6, 7, 9, 10] 
+                </span><br></pre>
+            </td>
+          </tr>
+        </table>
+      </figure>
     
     </div>
     <div class="git"></div>
