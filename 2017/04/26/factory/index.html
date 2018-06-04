@@ -170,7 +170,8 @@
           <li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">定义</span></a></li>
           <li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">场景问题</span></a></li>
           <li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">解决方案</span></a></li>
-          <li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">相关模式</span></a></li>
+          <li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">优缺点</span></a></li>
+          <li class="toc-item toc-level-3"><a class="toc-link" href="#Thought-about-factory"><span class="toc-text">思考简单工厂</span></a></li>
         </ol>
       </li>
     </ol>
@@ -288,7 +289,7 @@
             </td>
           </tr>
         </table>
-    </figure>
+      </figure>
 
       <div class="highlight bash">
         <p>
@@ -301,6 +302,121 @@
       <p>More info: <code>上面实现想想接口的功能和思想，发现了什么？仔细想想？</code></p>
       <p> 你会发现在客户端调用的时候，客户端不仅知道了接口，同时还知道具体的实现。而接口的思想是： 隔离封装，客户端根本就不应该知道具体的实现类是Impl。有朋友会说，那好，我把Impl从客户端拿掉，让api真正的对实现进行封装隔离，可是新的问题又出现了，当把new Impl() 去掉后，却发现无法得到api接口对象了，怎么办那。</p>
       <p>把这个问题描述一下：在java编程中，出现只知道接口而不知道实现，该怎么办，就像在Client,他知道要是用Api接口,却不知道如何使用接口</p>
+
+    <h3 id="Generate-static-files">
+      <a href="#Create-a-new-post" class="headerlink" title="解决方案">解决方案</a>
+     </h3>
+     <p>
+      <code>简单工厂示例代码</code>
+      <img src="/images/factory.PNG">
+    </p>
+
+    <p>More info: 
+      <a href="" target="_blank" rel="noopener" class="string"> 
+        虽然说简单工厂的方法大多是用来创建接口的，但是仔细分析就会发现，真正的实现功能是具体的实现类，这些实现类都是已经做好的，并不是真的要靠简单工厂来创造出来的，简单工厂方法的内部主要实现的功能是：<code>选择合适的实现类来创建实例对象</code>
+      </a>
+      选择条件或者参数通常有以下几种：
+    </p>  
+     <figure class="highlight bash">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><span class="line">1</span><br></pre>
+          </td>
+          <td class="code">
+            <pre><span class="line">来源于客户端，有Client来传递参数。</span><br></pre>
+          </td>
+        </tr>
+        <tr>
+          <td class="gutter">
+            <pre><span class="line">2</span><br></pre>
+          </td>
+          <td class="code">
+            <pre><span class="line">来源于配置文件，从配置文件获取用于判断的值。</span><br></pre>
+          </td>
+        </tr>
+         <tr>
+          <td class="gutter">
+            <pre><span class="line">2</span><br></pre>
+          </td>
+          <td class="code">
+            <pre><span class="line">来源于程序中运行的某个值，比如从缓存中获取某个运行期的值。</span><br></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+
+    <h3 id="Deploy-to-remote-sites">
+      <a href="#Deploy-to-remote-sites" class="headerlink" title="优缺点">优缺点</a>
+    </h3>
+    <code>优点</code>
+     <figure class="highlight bash">
+        <table>
+          <tr>
+            <td class="gutter">
+              <pre><span class="line">1</span><br></pre>
+            </td>
+            <td class="code">
+              <pre><span class="line">帮助封装</span><br></pre>
+            </td>
+          </tr>
+          <tr>
+            <td class="gutter">
+            </td>
+            <td class="code">
+              <pre><span class="line">有好的封装,让组件外不能真正的面相接口编程</span><br></pre>
+            </td>
+          </tr>
+          <tr>
+            <td class="gutter">
+              <pre><span class="line">2</span><br></pre>
+            </td>
+            <td class="code">
+              <pre><span class="line">解耦</span><br></pre>
+            </td>
+          </tr>
+          <tr>
+            <td class="gutter">
+            </td>
+            <td class="code">
+              <pre><span class="line">实现了客户端和具体实现类的解耦</span><br></pre>
+            </td>
+          </tr>
+        </table>
+      </figure>
+
+    <code>缺点</code>  
+      <figure class="highlight bash">
+        <table>
+          <tr>
+            <td class="gutter">
+              <pre><span class="line">1</span><br></pre>
+            </td>
+            <td class="code">
+              <pre><span class="line">增加客户端的复杂度</span><br></pre>
+            </td>
+          </tr>
+          <tr>
+            <td class="gutter">
+            </td>
+            <td class="code">
+              <pre><span class="line">客户端必须能理解各个参数所代表的具体功能含义</span><br></pre>
+            </td>
+          </tr>
+        </table>
+      </figure>
+    <h3 id="Thought-about-factory">
+      <a href="#Deploy-to-remote-sites" class="headerlink" title="思考简单工厂">思考简单工厂</a>
+    </h3>
+
+    <p> 
+      简单工厂的本质 <code>选择实现</code> <br>
+      何时选用简单工厂<br>
+      <code>如果想要完全封装隔离具体实现，让外部只能通过接口来操作封装体，让客户端通过工厂来获取相应的接口，而无需关心具体的实现</code><br>
+      <code>如果想要把对外创建对象的职责集中管理和控制可以选择简单工厂</code>
+    </p>
+    <p>More info: <span style="color:#1abc9c">简单工厂的重点是选择，是显示已经做好的，就算实现再简单，也要由具体的实现类来实现，而不是再简单工厂里面实现。<br>
+    简单工厂的目的在于为客户端来源则响应的实现，从而使客户端和实现之间解耦，这样一来，具体实现发生了变化就不用变动客户端了。<br></span></p>
   </div>
 
 </article>
