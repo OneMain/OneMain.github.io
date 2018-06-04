@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hello World | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta name="keywords" content="设计模式 简单工厂模式  抽象工厂模式  工厂模式 " />
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="设计模式">
+  <meta property="og:url" content="http://OneMain.github.io/2017/04/26/factory/index.html">
+  <meta property="og:site_name" content="设计模式">
+  <meta property="og:locale" content="default">
+  <meta property="og:updated_time" content="2017-04-26T11:06:58.719Z">
+
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">点我</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">点我</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc">
+      <li class="toc-item toc-level-2">
+        <a class="toc-link" href="#Quick-Start"><span class="toc-text">简单工厂</span></a>
+        <ol class="toc-child">
+          <li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">定义</span></a></li>
+          <li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">场景问题</span></a></li>
+          <li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">解决方案</span></a></li>
+          <li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">相关模式</span></a></li>
+        </ol>
+      </li>
+    </ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-hello-world" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">设计模式の简单工厂模式</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.04.26</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Cherry May</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://OneMain.github.io/2017/04/26/factory/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+    <p>
+       1.1 什么是模式那？<br>
+      设计模式从字面上理解，模，就是模型、模版的意思；式，就是方式、方法的意思。综合起来，所谓的模式就是： 可以作为模型或者末班的方式或者方法。再简单点说就是可以用来作为样板的方式或者方法，类似于大家所熟悉的范例。
+       1.2 设计模式的概念？<br>
+       设计模式：是指在软件开发中，经过验证的，用于解决在特定环境下重复出现的，特定问题的解决方案。<br>
+       1.3 设计模式的组成?<br>
+       模式名称、环境和问题、解决方案、效果
+    </p>
+
+     <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="简单工厂"></a>简单工厂</h2>
+
+     <h3 id="Create-a-new-post">
+      <a href="#Create-a-new-post" class="headerlink" title="简单工厂-定义">定义</a>
+        简单工厂-定义
+     </h3>
+
+     <figure class="highlight bash">
+      <table>
+        <tr>
+          <td class="gutter">
+            <pre><span class="line">1</span><br></pre>
+          </td>
+          <td class="code">
+            <pre><span class="line">提供一个创建对象实例的功能，而无需关心其具体实现。</span><br></pre>
+          </td>
+        </tr>
+      </table>
+    </figure>
+
+    <p>More info: 
+      <a href="https://baike.baidu.com/item/%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/8801727?fr=aladdin" target="_blank" rel="noopener" class="string"> 
+        简单工厂不是一个标准的设计模式，但是它实在是太常用了。建单位且神奇，所以需要好好掌握它，就当是学习设计模式的热身运动吧。
+      </a>
+    </p>
+
+
+     <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="场景问题"></a>场景问题</h3>
+     <div class="highlight bash">
+        <p>
+          <span class="gutter">1. java 中接口的概念</span><br>
+          <span class="code">在java中接口是一种特殊的抽象类，跟一般的抽象类相比，接口里面的所有方法都是抽象方法，接口里面的所有属性都是常量。也就是说，接口里面只有方法定义而没有方法的实现</span><br>
+          <span class="gutter">2. 接口用来做什么</span><br>
+          <span class="code">通常接口用来定义实现类的行为定义，通过使用接口，可以实现不相关类的相同行为，为不需要考虑这些类之间的层次关系</span><br>
+          <span class="gutter">3. 接口的思想</span><br>
+          <span class="code">封装隔离</span><br>
+          <span class="gutter">4. 使用接口的好处</span><br>
+          <span class="code">由于外部调用和内部实现被接口隔离开了，那么只要接口不变，内部实现的变化就不会影响到外部应用，从而使系统更加灵活，更好的拓展性和延展性</span><br>
+          <span class="gutter">5. 接口和抽象类的选择</span><br>
+          <span class="code">既然接口是一种特殊的抽象类，那么在开发中，该如何选择接口还是抽象类那？对于二者的选择大都遵循二句话<br>
+            <一>: 优先选择接口<br>
+            <二>： 在既要定义子类的行为，又要为子类提供公共功能是应选择抽象类
+          </span><br>
+
+        </p>
+      </div>
+      <div class="highlight bash">
+        <p>
+          <span class="gutter">不适用模式解决方案</span>
+          <p>
+            /**
+             * 
+             * (1) 某个接口 （通用的，抽象的，费具体的功能）
+             */
+            public interface Api{
+              public void test1(String s);
+            }
+            /**
+             *(2) 既然有了借口，就要实现它，定义impl 
+             * 
+             */
+            public class Impl implements Api{
+              public void test1(String s) {
+                System.out.print("Now in Impl the input s==" + s);
+              }
+            }
+            /**
+             * (3) 客户端： 测试使用Api接口
+             *
+             */
+            public class Client{
+              public static void main (String[] args) {
+                Api api = new Impl();
+                api.test1("hahhahahahah");
+              }
+            }
+          </p>  
+        </p>
+      </div>
+      <p>More info: 上面实现想想接口的功能和思想，发现了什么？仔细想想？</p>
+      <p> 你会发现在客户端调用的时候，客户端不仅知道了接口，同时还知道具体的实现。而接口的思想是： 隔离封装，客户端根本就不应该知道具体的实现类是Impl。有朋友会说，那好，我把Impl从客户端拿掉，让api真正的对实现进行封装隔离，可是新的问题又出现了，当把new Impl() 去掉后，却发现无法得到api接口对象了，怎么办那。</p>
+      <p>把这个问题描述一下：在java编程中，出现只知道接口而不知道实现，该怎么办，就像在Client,他知道要是用Api接口,却不知道如何使用接口</p>
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持OneMain</div>
+        <ul>
+        
+          <li class="item">
+            <span>微信扫一扫</span>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <span>支付宝扫一扫</span>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="hide pull-left" href="/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://OneMain.github.io/2017/04/26/factory/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+    
+
+    
+    
+
+    
+
+    
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
