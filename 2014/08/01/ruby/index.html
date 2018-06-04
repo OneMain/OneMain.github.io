@@ -195,12 +195,7 @@
       <p>一直再买红篮球，知道看了一部电视剧，剧中王丽坤扮演的是一名会计行业人员，其中一个场景印象特别深，在她将要交不起房租的那几天，在家苦苦钻研算红篮球概率，人家最后竟然中了2000元，而且人家说了，这很难算了，最起码能算啊。。。。佩服</p>
       <p>至此决定写个抓取，我也来掐指算算。。。。。。。</p>
       <code>nokogiri</code>
-      Nokogiri是Ruby的gem,常用来解析XML/HTML,爬取网络数据等.<br>
-        基础语法</br>
-        直接以字符串形式获取nokogiri对象:<br>
-        html_doc = Nokogiri::HTML("<span>Mr. Belvedere Fan Club</span>")<br>
-        xml_doc = Nokogiri::XML("<root><aliens><alien><name>Alf</name></alien></aliens></root>")<br>
-        这里的html_doc和xml_doc就是nokogiri文件,<a href="https://www.rubydoc.info/github/sparklemotion/nokogiri/Nokogiri/XML/Document">它们可用的方法在这里</a><br>
+      <a href="https://www.rubydoc.info/github/sparklemotion/nokogiri/Nokogiri/XML/Document">基本用法在这里</a><br>
 
         也可以通过文件句柄获取nokogiri对象:<br>
         f = File.open("blossom.xml")<br>
@@ -214,17 +209,19 @@
         <figure class="highlight bash">
           <table>
             <tr>
-              <td class="gutter">
-                <pre><span class="line">require 'net/http'</span><br></pre>
-              </td>
               <td class="code">
-                <pre><span class="line">require 'mysql2'</span><br></pre>
+                <pre><span class="line">require 'net/http'</span><br></pre>
               </td>
             </tr>
             <tr>
-              <td class="gutter">require 'nokogiri'
-              </td>
               <td class="code">
+                <pre><span class="line">require nokogiri</span><br></pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="code">
+                <pre><span class="line">require 'mysql2'</span><br></pre>
               </td>
             </tr>
           </table>
