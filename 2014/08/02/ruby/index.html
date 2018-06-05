@@ -215,9 +215,7 @@
 
   <div class="article-content">
     
-  	<pre>
-	  	Active Support 是rails的一个组件,拓展了一些使用功能
-	    文章主要涉及
+  	<pre>Active Support 是rails的一个组件,拓展了一些使用功能文章主要涉及
 	    1: 核心拓展是什么
 	    2: 如何加载所有拓展
 	    3: 如何按需加载想用的扩展
@@ -231,12 +229,8 @@
     <div data-type="listing">
       <p>获取 <code>blank?</code> 方法最轻便的做法是按需加载其定义所在的文件。</p>
       <pre class="highlight language-ruby">
-        <code>
-          <span class="nb">require</span> 
-          <span class="s1">'active_support'</span>
-          <span class="nb">require</span> 
-          <span class="s1">'active_support/core_ext/object/blank'</span>
-        </code>
+        require 'active_support/core_ext/object/blank
+        require  'active_support/core_ext/object/blank'
        </pre>
      </div>
 	 	Active Support 中的各部分功能是相对独立的，可以只加载需要的功能，也可以方便地加载相互联系的功能<br>
@@ -281,7 +275,7 @@
 
       <code>try!</code>Same as <code>try</code> but raises a +NoMethodError+ exception if the receiver is not +nil+ and does not implement the tried method.
 
-    <pre>
+    </pre>
 
     <div data-type="note">
       <h1>注意</h1>
