@@ -24,3 +24,37 @@ html.page-home {
   background-repeat: no-repeat;
 
 }
+div[data-type="listing"] pre {
+  background-color: #f1f1f1;
+  padding: 1rem;
+}
+div[data-type="note"] {
+  background-color: #ffedcc;
+  margin: 1rem 2rem;
+  padding: 0 1em 1em 1em;
+}
+div[data-type="tip"] {
+  background-color: #dbfaf4;
+  margin: 1rem 2rem;
+  padding: 0 1em 1em 1em;
+}
+ul{
+  list-style-type: square;
+  color: #17a2b8;
+  box-sizing: border-box;
+}
+div[data-type="warning"] h1 {
+  background-color: #f29f97;
+}
+div[data-type="tip"] h1 {
+  background-color: #1abc9c;
+}
+div[data-type="note"] h1 {
+  background-color: #f0b37e;
+}
+div[data-type="tip"] h1, div[data-type="note"] h1, div[data-type="warning"] h1 {
+  color: #fff;
+  font-size: 1rem;
+  margin: 0 -1em;
+  padding: 0.5em 1em;
+}
